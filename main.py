@@ -16,7 +16,7 @@ def start_game():
     small_font = pygame.font.Font(None, 32)
     large_font_size = 80
     small_font_size = 30
-    RED = (255, 0, 0)
+    RED = (250, 0, 0)
 
     character = pygame.image.load("character.png")
     character_size = character.get_rect().size
@@ -95,15 +95,19 @@ def start_game():
                 game_over = True
             x_touch = False
             y_touch = False
+
+
         if game_over is True:
             game_over_image = large_font.render('Game Over', True, RED)
+            score_image = game_font.render("Score: " + str(score), True, RED)
             set_restart_image = game_font.render('Press ENTER : RESTART', True, RED)
-            set_exit_image = game_font.render('Press ESC : EXIT', True, RED)
-            screen.blit(game_over_image, (screen_width // 2 - game_over_image.get_width() // 2, screen_height // 2 - game_over_image.get_height() // 2))
+            set_exit_image = game_font.render('Click [X] : EXIT', True, RED)
+            screen.blit(game_over_image, (screen_width // 2 - game_over_image.get_width() // 2, screen_height // 2 - 100))
+            screen.blit(score_image, (screen_width // 2 - score_image.get_width() // 2 , screen_height // 2 - score_image.get_height() // 2 - 20))
             screen.blit(set_restart_image,
-                        (screen_width // 2 - game_over_image.get_width() // 2 + 25, screen_height // 2 - game_over_image.get_height() // 2 + large_font_size))
+                        (screen_width // 2 - game_over_image.get_width() // 2 , screen_height // 2 - game_over_image.get_height() // 2 +  large_font_size))
             screen.blit(set_exit_image,
-                        (screen_width // 2 - game_over_image.get_width() // 2 + 25,screen_height // 2 - game_over_image.get_height() // 2 + large_font_size + small_font_size))
+                        (screen_width // 2 - game_over_image.get_width() // 2 + 68,screen_height // 2 - game_over_image.get_height() // 2 +  large_font_size + 40))
             pygame.display.update()
 
             # 게임 종료 후 종료 or 재시작 설정
